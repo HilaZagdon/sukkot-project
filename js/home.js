@@ -1,3 +1,6 @@
+document.addEventListener('DOMContentLoaded', () => {
+let likedMoviesArray = JSON.parse(localStorage.getItem("likedMovies")) || [];
+
 const fetchMovies = (page = 1, popularity = 'day') => {
   let url;
 
@@ -58,15 +61,19 @@ const fetchMovies = (page = 1, popularity = 'day') => {
           localStorage.setItem("likedMovies", JSON.stringify(likedMoviesArray));
         }
       });
-      const heartIcons = document.querySelectorAll('.heart-icon');
-      heartIcons.forEach((heartIcon) => {
-        const movieTitle = heartIcon.closest('p').textContent.split(':')[1].trim();
-        if (likedMoviesArray.includes(movieTitle)) {
-          heartIcon.classList.remove('fa-regular');
-          heartIcon.classList.add('fa-solid');
-          heartIcon.style.color = '#ff0000';
-        }
-      });
+
+      const updateHeartIcons = () => {
+        const heartIcons = document.querySelectorAll('.heart-icon');
+        heartIcons.forEach((heartIcon) => {
+          const movieTitle = heartIcon.closest('p').textContent.split(':')[1].trim();
+          if (likedMoviesArray.some((movie) => movie.title === movieTitle)) {
+            heartIcon.classList.remove('fa-regular');
+            heartIcon.classList.add('fa-solid');
+            heartIcon.style.color = '#ff0000';
+          }
+        });
+      };
+    updateHeartIcons();
     })
     .catch((error) => {
       console.log(error);
@@ -90,10 +97,6 @@ weeklyId.addEventListener('click', () => {
   
   
   });
-
-
-
-
 
 const pagination = document.querySelector('.pagination');
 const totalPages = 5;
@@ -147,4 +150,6 @@ const updatePagination = () => {
 
 updatePagination();
 
-let likedMoviesArray = JSON.parse(localStorage.getItem("likedMovies")) || [];
+
+})
+

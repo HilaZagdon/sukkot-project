@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const likedMoviesList = document.getElementById('likedMoviesList');
   const resetButton = document.getElementById('resetButton');
 
+
   function createMovieCard(movieData) {
     const movieCard = document.createElement('div');
     movieCard.className = 'movie-card';
@@ -24,13 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const index = likedMoviesArray.findIndex((movie) => movie.id === movieData.id);
       if (index !== -1) {
         likedMoviesArray.splice(index, 1);
-        localStorage.setItem('likedMovies', JSON.stringify(likedMoviesArray));
-        displayLikedMovies();
       } else {
         likedMoviesArray.push(movieData);
-        localStorage.setItem('likedMovies', JSON.stringify(likedMoviesArray));
-        displayLikedMovies();
       }
+      updateLocalStorage();
+      displayLikedMovies();
     });
   
     movieCard.appendChild(movieTitle);
@@ -39,31 +38,35 @@ document.addEventListener('DOMContentLoaded', () => {
   
     return movieCard;
   }
+  
+  function updateLocalStorage() {
+    localStorage.setItem('likedMovies', JSON.stringify(likedMoviesArray));
+  }
 
   function displayLikedMovies() {
     likedMoviesList.innerHTML = '<h2>Liked Movies</h2>';
     const movieCardContainer = document.createElement('div');
     movieCardContainer.className = 'movie-card-container';
-  
+
     likedMoviesArray.forEach((movieData) => {
       const movieCard = createMovieCard(movieData);
       movieCardContainer.appendChild(movieCard);
     });
-  
+
     likedMoviesList.appendChild(movieCardContainer);
   }
 
   displayLikedMovies();
+  
 
   resetButton.addEventListener('click', () => {
     localStorage.removeItem("likedMovies");
     likedMoviesArray = [];
+    updateLocalStorage();
     displayLikedMovies();
   });
 });
 
-function saveLikedMoviesList() {
+window.addEventListener('beforeunload', () => {
   localStorage.setItem('likedMovies', JSON.stringify(likedMoviesArray));
-}
-
-window.addEventListener('beforeunload', saveLikedMoviesList);
+});
