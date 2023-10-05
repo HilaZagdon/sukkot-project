@@ -5,3 +5,23 @@
 .try {
   color:red
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 20px; 
+}
+
+.navbar-brand {
+  margin-right: auto; 
+}

@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function createMovieCard(data) {
     const heartIconClass = isMovieLiked(data.id) ? 'fa-solid' : 'fa-regular';
-    const heartIconColor = isMovieLiked(data.id) ? '#ff0000' : '';
+
 
     movieTitle.innerHTML =
       `<p >Title: ${data.title} <i class="heart-icon ${heartIconClass} fa-heart" style="color: #ff0000;"></i></p>`;
