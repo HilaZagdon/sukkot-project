@@ -5,20 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link rel="stylesheet" href="css/home.css">
+  <link rel="icon" type="image/x-icon" href="../images/movies+ icon black.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lunasima&family=Poppins&family=Zilla+Slab:wght@700&display=swap" rel="stylesheet">
   <title>Movie Wiki</title>
 </head>
 <body>
   <div id="headerHome">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand ml-auto" href="#">Movie Wiki</a>
+    <nav class="navbar navbar-expand-lg navbar-dark custom-bg-color">
+      <img id="tvIcon" src="images/movies+ icon.png" />
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mx-auto"> 
+        <ul class="navbar-nav mx-auto "> 
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            <a id="homeLink" class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="html/singleMovie.html">Movie Info</a>
@@ -33,14 +37,19 @@
             <a class="nav-link" href="html/about.html">About</a>
           </li>
         </ul>
-      
       </div>
     </nav>
+    
   </div>
   <div id="MainHome"  >
 
-    <button id="dailyId" >Daily</button>
-    <button id="weeklyId">Weekly</button>   
+  <div class="buttonsWD">
+    <button id="dailyId" class="animated-button" >Daily</button>
+    <button id="weeklyId" class="animated-button" >Weekly</button> 
+   </div> 
+ <div class="openingHome">
+   <p id="openingLine">Discover the next movie on your watchlist...</p> 
+  </div>
     <section id="moviesPresentation"></section>
     <nav aria-label="...">
       <ul class="pagination">

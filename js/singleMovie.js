@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         heartIcon.classList.remove('fa-solid');
         heartIcon.classList.add('fa-regular');
-        heartIcon.style.color = '';
+
         const index = likedMoviesArray.findIndex((movie) => movie.id === data.id);
         if (index !== -1) {
           likedMoviesArray.splice(index, 1);

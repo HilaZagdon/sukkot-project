@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentPage = 1;
     fetchMovies(searchMoviesByName.value, currentPage);
   });
-
+  updatePagination();
   function fetchMovies(movie, page = 1) {
     const url = `https://api.themoviedb.org/3/search/movie?language=en-US&query=${movie}&page=${page}&api_key=f673b4c51255192622a586f74ec1f251`;
 

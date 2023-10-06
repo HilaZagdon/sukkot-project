@@ -1,0 +1,199 @@
+.navbar-nav  {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+
+#tvIcon {
+width: 8%;
+}
+
+body {
+  background-color: #343a40;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+color: #f8f9fa;
+}
+
+.navbar {
+  background-color: #343a40;
+}
+
+@media only screen and (max-width: 991px) {
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-color: transparent;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .navbar-collapse.show {
+    background-color: #47494d94;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+    border-radius: 5%;
+  }
+}
+
+
+#moviesPresentation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+
+.navbar-nav .nav-link {
+  position: relative;
+ 
+}
+
+.navbar-nav .nav-link::before {
+ 
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 7%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #D42029;
+  transition: width 0.3s ease;
+}  
+
+.navbar-nav .nav-link:hover::before {
+  width: 100%;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-item:not(.active) .nav-link {
+  color: rgb(173, 168, 168); 
+  font-size: 20px;
+}
+
+.buttonsWD {
+  display: flex;
+  align-items: center;
+justify-content: center;
+column-gap: 5%;
+height: 200px;
+}
+
+.openingHome {
+  display: flex;
+  align-items: center;
+justify-content: center;
+font-size: 4rem;
+font-family: 'Dancing Script', cursive;;
+}
+
+
+#dailyId , #weeklyId {
+  display: flex;
+align-items: center;
+justify-content: center;
+height: 100px;
+  width: 300px; 
+  background: linear-gradient(to bottom right, #D42029, #f88181);
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+#dailyId:not([disabled]):focus , #weeklyId:not([disabled]):focus {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(189, 59, 83, 0.5), .125rem .125rem 1rem rgba(218, 82, 45, 0.5);
+}
+
+#dailyId:not([disabled]):hover , #weeklyId:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(189, 59, 83, 0.5), .125rem .125rem 1rem rgba(218, 82, 45, 0.5);
+}
+
+.animated-button {
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+
+.Danimate-top-right {
+  position: absolute;
+
+  height:40px ; 
+  width: 80px ; 
+  font-size:1rem ; 
+  animation: moveToRightD 3s ;
+  animation-iteration-count: once;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveToRightD {
+  from {
+transform: translate(-64%, 0) scale(1);
+  }
+  to {
+    transform: translate(130%, -60%) scale(0.5);
+  }
+}
+
+@keyframes moveToRightW {
+  from {
+transform: translate(62%, 0) scale(1);
+  }
+  to {
+    transform: translate(200%, -60%) scale(0.5);
+  }
+}
+
+
+.Wanimate-top-right {
+  position: absolute;
+  font-size: 1rem;
+  height:40px ; 
+  width: 80px ; 
+  font-size:1rem ; 
+  animation: moveToRightW 3s ;
+  animation-iteration-count: once;
+  animation-fill-mode: forwards;
+}
+
+.pagination {
+  display: none;
+}
+
+@keyframes moveUp {
+  from{
+    transform: translate(0,0);
+  }
+  to {
+    transform: translate(0,-100%);
+  }
+}
+
+@keyframes moveUp1 {
+  from{
+    transform: translate(0,0);
+  }
+  to {
+    transform: translate(0,-3%);
+  }
+}
+
