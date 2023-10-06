@@ -4,8 +4,81 @@ document.addEventListener("DOMContentLoaded", () => {
   const dailyId = document.getElementById("dailyId");
   const weeklyId = document.getElementById("weeklyId");
   const pagination = document.querySelector(".pagination");
+  const likedMoviesList = document.getElementById("likedMoviesList");
+  const resetButton = document.getElementById("resetButton");
   let currentPage = 1;
   let popularity = "day";
+
+  function createMovieCard(movieData) {
+    const movieCard = document.createElement("div");
+    movieCard.className = "movie-card";
+  
+    const title = document.createElement("p");
+    title.textContent = `Title: ${movieData.title}`;
+  
+    const img = document.createElement("img");
+    img.src = `https://image.tmdb.org/t/p/original${movieData.poster_path}`;
+  
+    const heartIcon = document.createElement("i");
+    const isLiked = likedMoviesArray.some((movie) => movie.id === movieData.id);
+    heartIcon.className = `heart-icon ${isLiked ? "fa-solid" : "fa-regular"} fa-heart`;
+    heartIcon.style.color = isLiked ? "#ff0000" : "";
+  
+    heartIcon.addEventListener("click", () => {
+      const index = likedMoviesArray.findIndex((movie) => movie.id === movieData.id);
+      if (index !== -1) {
+        likedMoviesArray.splice(index, 1);
+        heartIcon.classList.remove("fa-solid");
+        heartIcon.classList.add("fa-regular");
+        heartIcon.style.color = "";
+      } else {
+        likedMoviesArray.push(movieData);
+        heartIcon.classList.remove("fa-regular");
+        heartIcon.classList.add("fa-solid");
+        heartIcon.style.color = "#ff0000";
+      }
+      updateLocalStorage();
+    });
+  
+    movieCard.appendChild(title);
+    movieCard.appendChild(img);
+    movieCard.appendChild(heartIcon);
+  
+    return movieCard;
+  }
+
+  function updateLocalStorage() {
+    localStorage.setItem("likedMovies", JSON.stringify(likedMoviesArray));
+  }
+
+  function updateLikedMoviesUI() {
+    const heartIcons = document.querySelectorAll(".heart-icon");
+    heartIcons.forEach((heartIcon) => {
+      const movieTitle = heartIcon.closest("p").textContent.split(":")[1].trim();
+      if (likedMoviesArray.some((movie) => movie.title === movieTitle)) {
+        heartIcon.classList.remove("fa-regular");
+        heartIcon.classList.add("fa-solid");
+        heartIcon.style.color = "#ff0000";
+      } else {
+        heartIcon.classList.remove("fa-solid");
+        heartIcon.classList.add("fa-regular");
+        heartIcon.style.color = "";
+      }
+    });
+  }
+
+  function displayLikedMovies() {
+    likedMoviesList.innerHTML = "<h2>Liked Movies</h2>";
+    const movieCardContainer = document.createElement("div");
+    movieCardContainer.className = "movie-card-container";
+
+    likedMoviesArray.forEach((movieData) => {
+      const movieCard = createMovieCard(movieData);
+      movieCardContainer.appendChild(movieCard);
+    });
+
+    likedMoviesList.appendChild(movieCardContainer);
+  }
 
   function fetchMovies(page = 1, popularity = "day") {
     let url;
@@ -28,79 +101,17 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(data);
         moviesPresentation.innerHTML = "";
         data.results.forEach((movieResult) => {
-          moviesPresentation.innerHTML += ` 
-            <p>title:${movieResult.title}<i class="heart-icon fa-regular fa-heart" style="color: #ff0000;"></i></p>
-            <img style="width: 20%; height: auto;" src="https://image.tmdb.org/t/p/original${movieResult.poster_path}" />
-       
-            `;
+          const movieCard = createMovieCard(movieResult);
+          moviesPresentation.appendChild(movieCard);
         });
 
-        moviesPresentation.addEventListener("click", (event) => {
-          const target = event.target;
-          const heartIcon =
-            target.tagName === "I" && target.classList.contains("fa-heart")
-              ? target
-              : target.closest("i.fa-heart");
-
-          if (heartIcon) {
-            const movieTitle = target
-              .closest("p")
-              .textContent.split(":")[1]
-              .trim();
-            const movieData = data.results.find(
-              (movieResult) => movieResult.title === movieTitle
-            );
-
-            if (heartIcon.classList.contains("fa-regular")) {
-              heartIcon.classList.remove("fa-regular");
-              heartIcon.classList.add("fa-solid");
-              heartIcon.style.color = "#ff0000";
-
-              if (movieData) {
-                likedMoviesArray.push(movieData);
-              }
-            } else if (heartIcon.classList.contains("fa-solid")) {
-              heartIcon.classList.remove("fa-solid");
-              heartIcon.classList.add("fa-regular");
-
-              if (movieData) {
-                const index = likedMoviesArray.findIndex(
-                  (movie) => movie.id === movieData.id
-                );
-                if (index !== -1) {
-                  likedMoviesArray.splice(index, 1);
-                }
-              }
-            }
-
-            localStorage.setItem(
-              "likedMovies",
-              JSON.stringify(likedMoviesArray)
-            );
-          }
-        });
-
-        const updateHeartIcons = () => {
-          const heartIcons = document.querySelectorAll(".heart-icon");
-          heartIcons.forEach((heartIcon) => {
-            const movieTitle = heartIcon
-              .closest("p")
-              .textContent.split(":")[1]
-              .trim();
-            if (likedMoviesArray.some((movie) => movie.title === movieTitle)) {
-              heartIcon.classList.remove("fa-regular");
-              heartIcon.classList.add("fa-solid");
-              heartIcon.style.color = "#ff0000";
-            }
-          });
-        };
-        updateHeartIcons();
         updatePagination(page, data.total_pages);
       })
       .catch((error) => {
         console.log(error);
       });
   }
+
   function animateButtons() {
     const isAnimated =
       dailyId.classList.contains("animate-top-right") &&
@@ -119,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       weeklyId.style.transform = "translate(0, 0) scale(1)";
     }
   }
+
   function showPagination() {
     pagination.style.display = "flex";
   }
@@ -208,4 +220,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  displayLikedMovies();
+
+  resetButton.addEventListener("click", () => {
+    localStorage.removeItem("likedMovies");
+    likedMoviesArray = [];
+    updateLocalStorage();
+    displayLikedMovies();
+  });
+
+  // Load liked movies from local storage on page load
+  updateLikedMoviesUI();
 });

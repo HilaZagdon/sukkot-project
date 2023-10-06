@@ -32,6 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
         likedMoviesArray.push(movieData);
       }
       updateLocalStorage();
+      // Update the heart icon's class and color immediately upon clicking
+      heartIcon.className = `heart-icon ${
+        likedMoviesArray.some((movie) => movie.id === movieData.id)
+          ? "fa-solid"
+          : "fa-regular"
+      } fa-heart`;
+      heartIcon.style.color = likedMoviesArray.some((movie) => movie.id === movieData.id)
+        ? "#ff0000"
+        : "";
       displayLikedMovies();
     });
 
