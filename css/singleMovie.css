@@ -1,5 +1,53 @@
-#searchIdButton {
-  width: 3%;
+#searchContainer {
+  display: flex;
+  align-items: center;
+  width: 70%; 
+  height: 80%;
+  border-radius: 40px; 
+  background-color: rgba(255, 255, 255, 0.5);
+  text-align: center; 
+  margin: 0 auto; 
+}
+
+
+#searchByIdInput {
+  flex: 1; 
+  border: none;
+  height: 3rem;
+  background: transparent;
+  outline: none;
+  padding-left: 30px;
+  font-size: 1.5rem ;
+  font-weight: bold;
+}
+
+#searchIdButton { 
+  width: 4%;
+  height: 4%; 
+  background-color: transparent; 
+  border: none;
+  cursor: pointer;
+  margin-left: 10px; 
+  margin-right: 10px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -ms-number-format: none;
+  text-align: left;
 }
 
 .navbar-nav  {
@@ -42,11 +90,13 @@ color: #f8f9fa;
 }
 
 
-#moviesPresentation {
-  display:flex;
+#moviePresentation {
+  display: flex;
   flex-wrap: wrap;
-flex-direction: row;
+  flex-direction: row;
+  justify-content: space-between; 
 }
+
 
 
 .navbar-nav .nav-link {
@@ -80,4 +130,63 @@ flex-direction: row;
 .navbar-nav .nav-item:not(.active) .nav-link {
   color: rgb(173, 168, 168); 
   font-size: 20px;
+}
+
+
+#posterContainer {
+  flex: 1; 
+  padding: 20px; 
+  text-align: center;
+}
+
+#MoviePoster img {
+  max-width: 100%; 
+  height: 100%;
+}
+
+#movieDetails {
+  flex: 2; 
+  padding: 20px; 
+  color: #ffffff;
+}
+
+#movieTitle,
+#dateAndRuntime,
+#movieGenre {
+margin-left: 3rem;
+}
+
+#movieTitle,
+#dateAndRuntime,
+#movieGenre,
+#movieCrew,
+#movieCast {
+  margin-bottom: 10px; 
+}
+
+#movieTitle{
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.columnsSection {
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.columnsSection img {
+margin-bottom: 2rem;
+
+}
+
+#movieCast img {
+width: 7rem;
+height: 10rem;
+}
+
+
+#movieGenre {
+  margin-bottom: 4rem;
 }

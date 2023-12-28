@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     movieTitle.innerHTML =
       `<p >Title: ${data.title} <i class="heart-icon ${heartIconClass} fa-heart" style="color: #ff0000;"></i></p>`;
     dateAndRuntime.innerHTML =
-      `<p >Date: ${data.release_date}</p>
+      `<p >Release Date: ${data.release_date}</p>
        <p >Runtime: ${data.runtime} min</p>`;
 
     const heartIcon = movieTitle.querySelector('.heart-icon');
@@ -41,44 +41,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const genreNames = data.genres.map((genre) => genre.name);
-    movieGenre.innerHTML = `<span>${genreNames.join(", ")}</span>`;
+    movieGenre.innerHTML = `<span>Genres: ${genreNames.join(", ")}</span>`;
 
-    let crewHtml = '';
-
-    for (let i = 0; i < 10 && i < data.credits.crew.length; i++) {
-      const crew = data.credits.crew[i];
-      const crewNames = `${crew.job} : ${crew.name}`;
-      crewHtml += (i > 0 ? ' , ' : '') + crewNames;
-    }
-    movieCrew.innerHTML = `<span>${crewHtml}</span>`;
 
     let castHtml = '';
-
+    let column1 = '';
+    let column2 = '';
+  
     for (let i = 0; i < data.credits.cast.length; i++) {
       const cast = data.credits.cast[i];
       const characterName = cast.character;
       const actorName = cast.name;
       const profilePath = `https://image.tmdb.org/t/p/original${cast.profile_path}`;
-
       const imageTag = profilePath ? `<img src="${profilePath}" alt="${actorName}" width="50" height="50">` : '';
-
+  
       const slashIndex = characterName.indexOf('/');
-
+  
       if (slashIndex !== -1) {
         const characters = characterName.substring(0, slashIndex);
-        castHtml += (i > 0 ? ' , ' : '') + `${imageTag} ${characters} : ${actorName} `;
+        const actorInfo = `${imageTag}     ${characters} : ${actorName}`;
+        if (i < 5) {
+          column1 += (i > 0 ? '<br>' : '') + actorInfo;
+        } else {
+          column2 += (i > 5 ? '<br>' : '') + actorInfo;
+        }
       } else {
-        castHtml += (i > 0 ? ' , ' : '') + `${imageTag} ${characterName} : ${actorName} `;
+        const actorInfo = `${imageTag}     ${characterName} : ${actorName}`;
+        if (i < 5) {
+          column1 += (i > 0 ? '<br>' : '') + actorInfo;
+        } else {
+          column2 += (i > 5 ? '<br>' : '') + actorInfo;
+        }
       }
-
+  
       if (i >= 9) {
         break;
       }
     }
-    movieCast.innerHTML = `<span>${castHtml}</span>`;
+  
+    castHtml = `<section class="columnsSection"><div class="cast-columns1">${column1}</div><div class="cast-columns2">${column2}</div><section>`;
+    movieCast.innerHTML = castHtml;
+
 
     MoviePoster.innerHTML =
-      `<img  style="width:20%; height:auto;" src="https://image.tmdb.org/t/p/original${data.poster_path}" />`;
+      `<img  src="https://image.tmdb.org/t/p/original${data.poster_path}" />`;
   }
 
   function isMovieLiked(movieId) {

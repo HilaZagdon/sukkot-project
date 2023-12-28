@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         likedMoviesArray.push(movieData);
       }
       updateLocalStorage();
-      // Update the heart icon's class and color immediately upon clicking
+
       heartIcon.className = `heart-icon ${
         likedMoviesArray.some((movie) => movie.id === movieData.id)
           ? "fa-solid"
@@ -81,3 +81,4 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("beforeunload", () => {
   localStorage.setItem("likedMovies", JSON.stringify(likedMoviesArray));
 });
+

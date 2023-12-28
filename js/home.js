@@ -9,40 +9,59 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentPage = 1;
   let popularity = "day";
 
-  function createMovieCard(movieData) {
+  function createMovieCardWithHover(movieData) {
     const movieCard = document.createElement("div");
     movieCard.className = "movie-card";
   
-    const title = document.createElement("p");
-    title.textContent = `Title: ${movieData.title}`;
+    const movieImage = document.createElement("img");
+    movieImage.src = `https://image.tmdb.org/t/p/original${movieData.poster_path}`;
+    movieImage.alt = movieData.title;
   
-    const img = document.createElement("img");
-    img.src = `https://image.tmdb.org/t/p/original${movieData.poster_path}`;
+    const movieDetails = document.createElement("div");
+    movieDetails.className = "movie-details";
+  
+    const movieHover = document.createElement("div");
+    movieHover.className = "movie-hover";
+  
+    const movieHoverBackground = document.createElement("div");
+    movieHoverBackground.className = "movie-hover-background";
+  
+    const movieTitle = document.createElement("p");
+    movieTitle.className = "movie-title";
+    movieTitle.textContent = `${movieData.title}
+    `;
+    movieTitle.innerHTML += `<p class="movieSpan">${movieData.overview}<p>`
+
   
     const heartIcon = document.createElement("i");
     const isLiked = likedMoviesArray.some((movie) => movie.id === movieData.id);
-    heartIcon.className = `heart-icon ${isLiked ? "fa-solid" : "fa-regular"} fa-heart`;
+    heartIcon.className = `heart-icon ${isLiked ? "fas" : "far"} fa-heart`;
     heartIcon.style.color = isLiked ? "#ff0000" : "";
   
     heartIcon.addEventListener("click", () => {
       const index = likedMoviesArray.findIndex((movie) => movie.id === movieData.id);
       if (index !== -1) {
         likedMoviesArray.splice(index, 1);
-        heartIcon.classList.remove("fa-solid");
-        heartIcon.classList.add("fa-regular");
+        heartIcon.classList.remove("fas");
+        heartIcon.classList.add("far");
         heartIcon.style.color = "";
       } else {
         likedMoviesArray.push(movieData);
-        heartIcon.classList.remove("fa-regular");
-        heartIcon.classList.add("fa-solid");
+        heartIcon.classList.remove("far");
+        heartIcon.classList.add("fas");
         heartIcon.style.color = "#ff0000";
       }
       updateLocalStorage();
     });
   
-    movieCard.appendChild(title);
-    movieCard.appendChild(img);
-    movieCard.appendChild(heartIcon);
+    movieHover.appendChild(movieHoverBackground);
+    movieHover.appendChild(movieTitle);
+    movieHover.appendChild(heartIcon);
+  
+    movieDetails.appendChild(movieHover);
+  
+    movieCard.appendChild(movieImage);
+    movieCard.appendChild(movieDetails);
   
     return movieCard;
   }
@@ -101,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(data);
         moviesPresentation.innerHTML = "";
         data.results.forEach((movieResult) => {
-          const movieCard = createMovieCard(movieResult);
+          const movieCard = createMovieCardWithHover(movieResult);
           moviesPresentation.appendChild(movieCard);
         });
 
@@ -131,6 +150,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+
+  
   function showPagination() {
     pagination.style.display = "flex";
   }
@@ -141,6 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchMovies(currentPage, popularity);
     animateButtons();
     showPagination();
+    carouselExampleIndicators.style.display = "none"
   });
 
   weeklyId.addEventListener("click", () => {
@@ -149,6 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchMovies(currentPage, popularity);
     animateButtons();
     showPagination();
+    carouselExampleIndicators.style.display = "none"
   });
 
   pagination.addEventListener("click", (event) => {
@@ -230,6 +253,6 @@ document.addEventListener("DOMContentLoaded", () => {
     displayLikedMovies();
   });
 
-  // Load liked movies from local storage on page load
   updateLikedMoviesUI();
 });
+
