@@ -9,6 +9,7 @@
       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
       crossorigin="anonymous"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lunasima&family=Poppins&family=Zilla+Slab:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/searchMovie.css" />
     <link
       rel="icon"
@@ -56,26 +57,35 @@
       </nav>
     </div>
     <div id="MainHome">
+
+      <div>
+        <p id="searchLineID">Enter movie name</p>
+      </div>
+      <div id="searchContainer">
       <input id="searchMoviesByName" type="text" />
       <button id="searchMoviesByNameBtn">search</button>
-      <section id="moviesPresentation"></section>
-      <nav aria-label="...">
-        <ul class="pagination">
-          <li class="page-item disabled">
-            <a class="page-link">Previous</a>
-          </li>
-          <li class="page-item"><a class="page-link">1</a></li>
-          <li class="page-item active" aria-current="page">
-            <a class="page-link">2</a>
-          </li>
-          <li class="page-item"><a class="page-link">3</a></li>
-          <li class="page-item"><a class="page-link">4</a></li>
-          <li class="page-item"><a class="page-link">5</a></li>
-          <li class="page-item">
-            <a class="page-link">Next</a>
-          </li>
-        </ul>
-      </nav>
+    </div>
+    <section id="moviesPresentation" class="movie-container"></section>
+      <div class="pagination-container">
+        <nav aria-label="...">
+          <ul class="pagination">
+            <li class="page-item disabled">
+              <a class="page-link">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" >1</a></li>
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" >2</a>
+            </li>
+            <li class="page-item"><a class="page-link" >3</a></li>
+            <li class="page-item"><a class="page-link" >4</a></li>
+            <li class="page-item"><a class="page-link" >5</a></li>
+            <li id="nextPage" class="page-item">
+              <a class="page-link">Next</a>
+            </li>
+          </ul>
+    </nav>
+    </div>
+
     </div>
     <div id="footerHome"></div>
 

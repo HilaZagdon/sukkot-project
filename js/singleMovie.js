@@ -3,21 +3,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const movieTitle = document.getElementById('movieTitle');
   const dateAndRuntime = document.getElementById('dateAndRuntime');
   const movieGenre = document.getElementById('movieGenre');
-  const movieCrew = document.getElementById('movieCrew');
   const movieCast = document.getElementById('movieCast');
   const MoviePoster = document.getElementById('MoviePoster');
   const searchIdButton = document.getElementById('searchIdButton');
   const searchByIdInput = document.getElementById('searchByIdInput');
+
+
+
 
   function createMovieCard(data) {
     const heartIconClass = isMovieLiked(data.id) ? 'fa-solid' : 'fa-regular';
 
 
     movieTitle.innerHTML =
-      `<p >Title: ${data.title} <i class="heart-icon ${heartIconClass} fa-heart" style="color: #ff0000;"></i></p>`;
+      `<p > ${data.title} <i class="heart-icon ${heartIconClass} fa-heart" style="color: #ff0000;"></i></p>`;
     dateAndRuntime.innerHTML =
-      `<p >Release Date: ${data.release_date}</p>
-       <p >Runtime: ${data.runtime} min</p>`;
+      `<p>Release Date: ${data.release_date} </p> <p> Runtime: ${data.runtime} min</p>`;
 
     const heartIcon = movieTitle.querySelector('.heart-icon');
 
@@ -47,39 +48,29 @@ document.addEventListener('DOMContentLoaded', () => {
     let castHtml = '';
     let column1 = '';
     let column2 = '';
-  
+    
     for (let i = 0; i < data.credits.cast.length; i++) {
       const cast = data.credits.cast[i];
       const characterName = cast.character;
       const actorName = cast.name;
       const profilePath = `https://image.tmdb.org/t/p/original${cast.profile_path}`;
-      const imageTag = profilePath ? `<img src="${profilePath}" alt="${actorName}" width="50" height="50">` : '';
-  
-      const slashIndex = characterName.indexOf('/');
-  
-      if (slashIndex !== -1) {
-        const characters = characterName.substring(0, slashIndex);
-        const actorInfo = `${imageTag}     ${characters} : ${actorName}`;
-        if (i < 5) {
-          column1 += (i > 0 ? '<br>' : '') + actorInfo;
-        } else {
-          column2 += (i > 5 ? '<br>' : '') + actorInfo;
-        }
+      const imageTag = profilePath ? `<img src="${profilePath}" alt="${actorName}" width="50" height="50" style="margin-right: 10px;">` : '';
+    
+    
+      const actorInfo = `<div style="display:flex;"> ${imageTag} <div style="display:flex; flex-direction:column; align-items:center;  justify-content:center; margin-left:auto; margin-right:auto"><span style="font-size: 1.2rem;font-weight: 700;">${characterName}</span> <span> ${actorName}</span> </div> </div>`;
+    
+      if (i < 5) {
+        column1 += (i > 0 ? '<br>' : '') + actorInfo;
       } else {
-        const actorInfo = `${imageTag}     ${characterName} : ${actorName}`;
-        if (i < 5) {
-          column1 += (i > 0 ? '<br>' : '') + actorInfo;
-        } else {
-          column2 += (i > 5 ? '<br>' : '') + actorInfo;
-        }
+        column2 += (i > 5 ? '<br>' : '') + actorInfo;
       }
-  
+    
       if (i >= 9) {
         break;
       }
     }
-  
-    castHtml = `<section class="columnsSection"><div class="cast-columns1">${column1}</div><div class="cast-columns2">${column2}</div><section>`;
+    
+    castHtml = `<section class="columnsSection"><div class="cast-columns1">${column1}</div><div class="cast-columns2">${column2}</div></section>`;
     movieCast.innerHTML = castHtml;
 
 
@@ -91,8 +82,22 @@ document.addEventListener('DOMContentLoaded', () => {
     return likedMoviesArray.some((movie) => movie.id === movieId);
   }
 
+  function animateButtons() {
+    const isAnimated = MainHome.classList.contains("animate-up");
+    if (!isAnimated) {
+      MainHome.classList.add("animate-up");
+    } else {
+      MainHome.style.transform = "translateY(-100px)";
+    }
+  }
+  
   searchIdButton.addEventListener('click', () => {
     const searchMovieVal = searchByIdInput.value;
+    searchLineID.style.visibility = "hidden";
+    carouselContainer.style.display = "none"
+    moviePresentation.style.background = "linear-gradient(to left, #61090d, #d3585e3a)"
+    movieDescriptionUnderPoster.style.background = "linear-gradient(to right, #d3585e00, #61090d)"
+    animateButtons();
     fetchMovies(searchMovieVal);
   });
 
@@ -123,3 +128,98 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
+
+(function () {
+  "use strict";
+
+  var carousel = document.getElementsByClassName("carousel")[0],
+    slider = carousel.getElementsByClassName("carousel__slider")[0],
+    items = carousel.getElementsByClassName("carousel__slider__item"),
+    prevBtn = carousel.getElementsByClassName("carousel__prev")[0],
+    nextBtn = carousel.getElementsByClassName("carousel__next")[0];
+
+  var width,
+    height,
+    totalWidth,
+    margin = 20,
+    currIndex = 0,
+    interval,
+    intervalTime = 4000;
+
+  function init() {
+    resize();
+    move(Math.floor(items.length / 2));
+    bindEvents();
+
+    timer();
+  }
+
+  function resize() {
+    (width = Math.max(window.innerWidth * 0.25, 275)),
+      (height = window.innerHeight * 0.5),
+      (totalWidth = width * items.length);
+
+    slider.style.width = totalWidth + "px";
+
+    for (var i = 0; i < items.length; i++) {
+      let item = items[i];
+      item.style.width = width - margin * 2 + "px";
+      item.style.height = height + "px";
+    }
+  }
+
+  function move(index) {
+    if (index < 1) index = items.length;
+    if (index > items.length) index = 1;
+    currIndex = index;
+
+    for (var i = 0; i < items.length; i++) {
+      let item = items[i],
+        box = item.getElementsByClassName("item__3d-frame")[0];
+      if (i == index - 1) {
+        item.classList.add("carousel__slider__item--active");
+        box.style.transform = "perspective(1200px)";
+      } else {
+        item.classList.remove("carousel__slider__item--active");
+        box.style.transform =
+          "perspective(1200px) rotateY(" + (i < index - 1 ? 40 : -40) + "deg)";
+      }
+    }
+
+    slider.style.transform =
+      "translate3d(" +
+      (index * -width + width / 2 + window.innerWidth / 2) +
+      "px, 0, 0)";
+  }
+
+  function timer() {
+    clearInterval(interval);
+    interval = setInterval(() => {
+      move(++currIndex);
+    }, intervalTime);
+  }
+
+  function prev() {
+    move(--currIndex);
+    timer();
+  }
+
+  function next() {
+    move(++currIndex);
+    timer();
+  }
+
+  function bindEvents() {
+    window.onresize = resize;
+    prevBtn.addEventListener("click", () => {
+      prev();
+    });
+    nextBtn.addEventListener("click", () => {
+      next();
+    });
+  }
+
+  init();
+})();

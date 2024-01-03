@@ -92,7 +92,10 @@ body {
   justify-content: center;
   font-size: 4rem;
   font-family: 'Dancing Script', cursive;
+
 }
+
+
 
 #dailyId,
 #weeklyId {
@@ -103,7 +106,7 @@ body {
   width: 300px;
   background: linear-gradient(to bottom right, #D42029, #f88181);
   border: 0;
-  border-radius: 12px;
+  border-radius: 50px;
   color: #FFFFFF;
   cursor: pointer;
   font-size: 2rem;
@@ -150,7 +153,7 @@ body {
     transform: translate(-64%, 0) scale(1);
   }
   to {
-    transform: translate(-20%, -60%) scale(0.6);
+    transform: translate(-45%, -35%) scale(0.6);
   }
 }
 
@@ -159,7 +162,7 @@ body {
     transform: translate(62%, 0) scale(1);
   }
   to {
-    transform: translate(50%, -60%) scale(0.6);
+    transform: translate(50%, -35%) scale(0.6);
   }
 }
 
@@ -575,4 +578,17 @@ height: 40rem;
 
 .carousel-inner {
   transition: transform 0.5s ease-in-out; 
+}
+
+
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #2f3539;
+  background: -moz-radial-gradient(circle, #2f3539 0%, #1e272e 100%);
+  background: -webkit-radial-gradient(circle, #2f3539 0%, #1e272e 100%);
+  background: radial-gradient(circle, #2f3539 0%, #1e272e 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2f3539",endColorstr="#1e272e",GradientType=1);
 }

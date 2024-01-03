@@ -8,57 +8,96 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentPage = 1;
 
 
-  function isMovieLiked(movieId) {
-    return likedMoviesArray.some((movie) => movie.id === movieId);
+
+  function createMovieCardWithHover(movieData) {
+    const movieCard = document.createElement("div");
+    movieCard.className = "movie-card";
+  
+    const movieImage = document.createElement("img");
+    movieImage.src = `https://image.tmdb.org/t/p/original${movieData.poster_path}`;
+    movieImage.alt = movieData.title;
+  
+    const movieDetails = document.createElement("div");
+    movieDetails.className = "movie-details";
+  
+    const movieHover = document.createElement("div");
+    movieHover.className = "movie-hover";
+  
+    const movieHoverBackground = document.createElement("div");
+    movieHoverBackground.className = "movie-hover-background";
+  
+    const movieTitle = document.createElement("p");
+    movieTitle.className = "movie-title";
+    movieTitle.textContent = `${movieData.title}
+    `;
+    movieTitle.innerHTML += `<p class="movieSpan">${movieData.overview}<p>`
+
+  
+    const heartIcon = document.createElement("i");
+    const isLiked = likedMoviesArray.some((movie) => movie.id === movieData.id);
+    heartIcon.className = `heart-icon ${isLiked ? "fas" : "far"} fa-heart`;
+    heartIcon.style.color = isLiked ? "#ff0000" : "";
+  
+    heartIcon.addEventListener("click", () => {
+      const index = likedMoviesArray.findIndex((movie) => movie.id === movieData.id);
+      if (index !== -1) {
+        likedMoviesArray.splice(index, 1);
+        heartIcon.classList.remove("fas");
+        heartIcon.classList.add("far");
+        heartIcon.style.color = "";
+      } else {
+        likedMoviesArray.push(movieData);
+        heartIcon.classList.remove("far");
+        heartIcon.classList.add("fas");
+        heartIcon.style.color = "#ff0000";
+      }
+      updateLocalStorage();
+    });
+  
+    movieHover.appendChild(movieHoverBackground);
+    movieHover.appendChild(movieTitle);
+    movieHover.appendChild(heartIcon);
+  
+    movieDetails.appendChild(movieHover);
+  
+    movieCard.appendChild(movieImage);
+    movieCard.appendChild(movieDetails);
+  
+    return movieCard;
   }
 
-  function createMovieCard(movieResult) {
-    const movieCard = document.createElement('div');
-    movieCard.classList.add('movie-card');
+  function updateLocalStorage() {
+    localStorage.setItem("likedMovies", JSON.stringify(likedMoviesArray));
+  }
 
-    const heartIconClass = isMovieLiked(movieResult.id) ? 'fa-solid' : 'fa-regular';
-
-
-    movieCard.innerHTML = `
-      <p>Title: ${movieResult.title} <i class="heart-icon ${heartIconClass} fa-heart" style="color: #ff0000;"></i></p>
-      <p>Release Date: ${movieResult.release_date}</p>
-      <img style="width:20%; height:auto;" src="https://image.tmdb.org/t/p/original${movieResult.poster_path}" />
-    `;
-
-    moviesPresentation.appendChild(movieCard);
-
-    const heartIcon = movieCard.querySelector('.heart-icon');
-
-    heartIcon.addEventListener('click', () => {
-      if (heartIcon.classList.contains('fa-regular')) {
-        heartIcon.classList.remove('fa-regular');
-        heartIcon.classList.add('fa-solid');
-        heartIcon.style.color = '#ff0000';
-
-   
-        const likedMovie = {
-          id: movieResult.id,
-          title: movieResult.title,
-          poster_path: movieResult.poster_path,
-        };
-
-        likedMoviesArray.push(likedMovie);
+  function updateLikedMoviesUI() {
+    const heartIcons = document.querySelectorAll(".heart-icon");
+    heartIcons.forEach((heartIcon) => {
+      const movieTitle = heartIcon.closest("p").textContent.split(":")[1].trim();
+      if (likedMoviesArray.some((movie) => movie.title === movieTitle)) {
+        heartIcon.classList.remove("fa-regular");
+        heartIcon.classList.add("fa-solid");
+        heartIcon.style.color = "#ff0000";
       } else {
-        heartIcon.classList.remove('fa-solid');
-        heartIcon.classList.add('fa-regular');
-        heartIcon.style.color = '#ff0000';
-
- 
-        const index = likedMoviesArray.findIndex((movie) => movie.id === movieResult.id);
-        if (index !== -1) {
-          likedMoviesArray.splice(index, 1);
-        }
+        heartIcon.classList.remove("fa-solid");
+        heartIcon.classList.add("fa-regular");
+        heartIcon.style.color = "";
       }
-
-
-      localStorage.setItem('likedMovies', JSON.stringify(likedMoviesArray));
     });
   }
+
+  function displayLikedMovies() {
+    const movieCardContainer = document.createElement("div");
+    movieCardContainer.className = "movie-card-container";
+
+    likedMoviesArray.forEach((movieData) => {
+      const movieCard = createMovieCard(movieData);
+      movieCardContainer.appendChild(movieCard);
+    });
+
+    likedMoviesList.appendChild(movieCardContainer);
+  }
+
 
   function updatePagination() {
     const pageItems = pagination.querySelectorAll('.page-item');
@@ -79,6 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     pageLinks[1 + currentPage - 1].parentElement.classList.add('active');
+  }
+
+  function showPagination() {
+    pagination.style.display = "flex";
   }
 
   pagination.addEventListener('click', (event) => {
@@ -108,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
   searchMoviesByNameBtn.addEventListener('click', () => {
     currentPage = 1;
     fetchMovies(searchMoviesByName.value, currentPage);
+    showPagination();
   });
   updatePagination();
   function fetchMovies(movie, page = 1) {
@@ -119,9 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(data);
         moviesPresentation.innerHTML = '';
         data.results.forEach((movieResult) => {
-          if (movieResult.poster_path !== null) {
-            createMovieCard(movieResult);
-          }
+          const movieCard = createMovieCardWithHover(movieResult);
+          moviesPresentation.appendChild(movieCard);
         });
       })
       .catch((error) => {
@@ -131,4 +174,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
  
   fetchMovies(searchMoviesByName.value, currentPage);
+
+  displayLikedMovies();
+
+  resetButton.addEventListener("click", () => {
+    localStorage.removeItem("likedMovies");
+    likedMoviesArray = [];
+    updateLocalStorage();
+    displayLikedMovies();
+  });
+
+  updateLikedMoviesUI();
 });
