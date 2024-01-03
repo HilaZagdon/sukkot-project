@@ -37,14 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
     heartIcon.addEventListener("click", () => {
       const isLiked = likedMoviesArray.some((movie) => movie.id === movieData.id);
       if (isLiked) {
-        // Movie is liked, remove it from the likedMoviesArray
+     
         const index = likedMoviesArray.findIndex((movie) => movie.id === movieData.id);
         likedMoviesArray.splice(index, 1);
         heartIcon.classList.remove("fas");
         heartIcon.classList.add("far");
         heartIcon.style.color = "";
       } else {
-        // Movie is not liked, add it to the likedMoviesArray
+
         likedMoviesArray.push(movieData);
         heartIcon.classList.remove("far");
         heartIcon.classList.add("fas");
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function displayLikedMovies() {
-    likedMoviesList.innerHTML = "<h2>Liked Movies</h2>";
+    likedMoviesList.innerHTML = `<h2 style="visibility: hidden;" >Liked Movies</h2>`;
     const movieCardContainer = document.createElement("div");
     movieCardContainer.className = "movie-card-container";
 
