@@ -163,6 +163,9 @@ document.addEventListener("DOMContentLoaded", () => {
     animateButtons();
     showPagination();
     carouselExampleIndicators.style.display = "none"
+    if (window.innerWidth <= 850) {
+      moviesPresentation.style.marginTop = "21rem";
+    }
   });
 
   weeklyId.addEventListener("click", () => {
@@ -172,6 +175,9 @@ document.addEventListener("DOMContentLoaded", () => {
     animateButtons();
     showPagination();
     carouselExampleIndicators.style.display = "none"
+    if (window.innerWidth <= 850) {
+      moviesPresentation.style.marginTop = "21rem";
+    }
   });
 
   pagination.addEventListener("click", (event) => {

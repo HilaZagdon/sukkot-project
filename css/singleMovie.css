@@ -26,13 +26,12 @@
 }
 
 #searchIdButton {
-  width: 4%;
-  height: 4%;
+  width: 5%;
+  height: 5%;
   background-color: transparent;
   border: none;
   cursor: pointer;
   margin-left: 10px;
-  margin-right: 10px;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -226,39 +225,7 @@ body {
 .heart-icon {
   cursor:pointer; }
 
-@media only screen and (max-width: 768px) {
-  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-    background-color: transparent;
-  }
 
-  #searchLineID {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-family: "Dancing Script", cursive;
-  }
-}
-
-@media only screen and (max-width: 991px) {
-  .navbar-collapse.show {
-    background-color: #47494d94;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-radius: 5%;
-  }
-
-  #searchLineID {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    font-family: "Dancing Script", cursive;
-  }
-}
 
 :root {
   --crsl-bg: transparent;
@@ -433,4 +400,204 @@ body > .carousel {
   
   #footerIcons a:active {
     text-decoration: none;
+  }
+
+  .bigCharacterName{
+    font-size: 2rem;
+  }
+
+  div.cast-columns1 span {
+    font-size: 1.4rem;
+  }
+
+  div.cast-columns2 span {
+    font-size: 1.4rem;
+  }
+
+
+
+  @media only screen and (max-width: 768px) {
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+      background-color: transparent;
+    }
+
+    #footerHome {
+      margin-top: 1.5rem;
+    }
+
+    .carousel {
+      margin-top: 4rem;
+    }
+
+    .carousel__prev {
+      left: 35%;
+    }
+    .carousel__next {
+      right: 35%;
+    }
+
+    div.cast-columns1 span {
+      font-size: 0.85rem;
+    }
+
+    div.cast-columns2 span {
+      font-size: 0.85rem;
+    }
+
+
+i.fa-regular.fa-circle-left::before{
+font-size: 4rem;
+
+    }
+  
+    i.fa-regular.fa-circle-right::before{
+font-size: 4rem;
+
+    }
+    
+    #searchIdButton {
+      width: 10%;
+      height: 10%;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+  
+    #searchLineID {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-family: "Dancing Script", cursive;
+    }
+
+   
+    #movieDescriptionUnderPoster {
+      margin-top: 2rem;
+      margin-left: -1.5rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 1rem;
+    }
+  
+    #posterContainer {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+    }
+  
+    .columnsSection {
+      padding-top: 1rem;
+      font-size: 0.6rem;
+    }
+  
+    #MoviePoster img {
+      max-width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      margin-top: 5rem;
+    }
+  
+    #movieDetails {
+      flex: 2;
+      padding: 10px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+  
+    #movieTitle {
+      width: 100%;
+      font-weight: 700;
+      font-family: "Dancing Script", cursive;
+      font-size: 2rem;
+    }
+  
+    #movieTitle,
+    #dateAndRuntime,
+    #movieGenre {
+      margin-left: 1.5rem;
+    }
+  
+    #movieTitle,
+    #dateAndRuntime,
+    #movieGenre,
+    #movieCast {
+      margin-bottom: 5px;
+    }
+  
+    .columnsSection {
+      display: flex;
+      justify-content: space-evenly;
+      padding-left: 30px;
+      text-align: center;
+    }
+  
+    .cast-columns span {
+      font-size: 0.5rem;
+    }
+  
+    .columnsSection img {
+      margin-bottom: 1rem;
+ 
+    }
+  
+    #movieCast img {
+      width: 4.5rem;
+      height: 6rem;
+      border-radius: 40px;
+      transition: transform 0.3s;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.879);
+    }
+  
+    #movieCast img:hover {
+      transform: scale(1.1);
+      box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.879);
+    }
+  
+    #movieGenre {
+      margin-bottom: 1rem;
+    }
+  
+    .heart-icon {
+      cursor: pointer;
+    }
+
+    .navbar-collapse.show {
+      background-color: #47494d94;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 5%;
+    }
+  
+    #searchLineID {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      font-family: "Dancing Script", cursive;
+    }
+  }
+
+  @media only screen and (max-width: 991px) {
+    .navbar-collapse.show {
+      background-color: #47494d94;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 5%;
+    }
+  
+    #searchLineID {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      font-family: "Dancing Script", cursive;
+    }
   }

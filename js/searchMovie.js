@@ -148,12 +148,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  searchMoviesByNameBtn.addEventListener('click', () => {
+  searchMoviesByNameBtn.addEventListener('click', searchMoviesByNameFun);
+  searchMoviesByName.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Prevent the default form submission
+      searchMoviesByNameFun();
+    }
+  });
+  
+  function searchMoviesByNameFun() {
     footerHome.style.marginTop = 0;
     currentPage = 1;
     fetchMovies(searchMoviesByName.value, currentPage);
     showPagination();
-  });
+    containerMovieTicket.style.display = "none";
+  }
+  
   updatePagination();
   function fetchMovies(movie, page = 1) {
     const url = `https://api.themoviedb.org/3/search/movie?language=en-US&query=${movie}&page=${page}&api_key=f673b4c51255192622a586f74ec1f251`;
@@ -176,14 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
  
   fetchMovies(searchMoviesByName.value, currentPage);
 
-  displayLikedMovies();
-
-  resetButton.addEventListener("click", () => {
-    localStorage.removeItem("likedMovies");
-    likedMoviesArray = [];
-    updateLocalStorage();
-    displayLikedMovies();
-  });
 
   updateLikedMoviesUI();
 });

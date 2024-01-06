@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const imageTag = profilePath ? `<img src="${profilePath}" alt="${actorName}" width="50" height="50" style="margin-right: 10px;">` : '';
     
     
-      const actorInfo = `<div style="display:flex;"> ${imageTag} <div style="display:flex; flex-direction:column; align-items:center;  justify-content:center; margin-left:auto; margin-right:auto"><span style="font-size: 1.2rem;font-weight: 700;">${characterName}</span> <span> ${actorName}</span> </div> </div>`;
+      const actorInfo = `<div style="display:flex;"> ${imageTag} <div class="bigCharacterName" style="display:flex; flex-direction:column; align-items:center;  justify-content:center; margin-left:auto; margin-right:auto"><span style="font-weight: 700;">${characterName}</span> <span style="font-weight: 500;">  ${actorName}</span> </div> </div>`;
     
       if (i < 5) {
         column1 += (i > 0 ? '<br>' : '') + actorInfo;
@@ -91,15 +91,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   
-  searchIdButton.addEventListener('click', () => {
-    const searchMovieVal = searchByIdInput.value;
-    searchLineID.style.visibility = "hidden";
-    carouselContainer.style.display = "none"
-    moviePresentation.style.background = "linear-gradient(to left, #61090d, #d3585e3a)"
-    movieDescriptionUnderPoster.style.background = "linear-gradient(to right, #d3585e00, #61090d)"
-    animateButtons();
-    fetchMovies(searchMovieVal);
-  });
+searchIdButton.addEventListener('click', searchMovie);
+
+searchByIdInput.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
+    searchMovie();
+  }
+});
+
+function searchMovie() {
+  const searchMovieVal = searchByIdInput.value;
+  searchLineID.style.visibility = "hidden";
+  carouselContainer.style.display = "none";
+  moviePresentation.style.background = "linear-gradient(to left, #61090d, #d3585e3a)";
+  movieDescriptionUnderPoster.style.background = "linear-gradient(to right, #d3585e00, #61090d)";
+  animateButtons();
+  fetchMovies(searchMovieVal);
+}
 
   function fetchMovies(movieId) {
     const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=f673b4c51255192622a586f74ec1f251&language=en-US&append_to_response=credits`;

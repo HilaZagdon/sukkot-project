@@ -418,13 +418,15 @@ justify-content: center;
 }
 
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 850px) {
   .buttonsWD {
     align-items: center;
+    
   }
 
   .openingHome {
     text-align: center;
+    margin-top: -20px;
   }
 
   @keyframes moveToRightD {
@@ -432,7 +434,7 @@ justify-content: center;
       transform: translate(-60%, 0) scale(1);
     }
     to {
-      transform: translate(-70%, -90%) scale(0.4);
+      transform: translate(-70%, -60%) scale(0.7);
     }
   }
   
@@ -441,7 +443,7 @@ justify-content: center;
       transform: translate(60%, 0) scale(1);
     }
     to {
-      transform: translate(70%, -90%) scale(0.4);
+      transform: translate(70%, -60%) scale(0.7);
     }
   }
 
@@ -490,17 +492,11 @@ justify-content: center;
   z-index: 2;
 }
 
-
-}
-
-
-@media only screen and (max-width: 991px) {
-  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-    background-color: transparent;
+  #moviesPresentation {
+    padding-left: 30px;
+margin-bottom: -25rem;
   }
-}
 
-@media only screen and (max-width: 991px) {
   .navbar-collapse.show {
     background-color: #47494d94;
     display: flex;
@@ -510,12 +506,16 @@ justify-content: center;
     text-align: center;
     border-radius: 5%;
   }
-}
 
-
-@media only screen and (max-width: 991px) {
+  #carouselContainer {
+    margin-bottom: 20px; 
+  }
   #tvIcon {
     width: 6%;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-color: transparent;
   }
 
   #dailyId,
@@ -566,13 +566,11 @@ justify-content: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    flex-direction: column;
     padding: 10px; 
-    margin-top: 83rem;
   }
   
   .movie-card {
-    width: 100%;
+    width: 30.5%;
     margin-bottom: 20px;
     margin-right: 20px;
     position: relative;
@@ -587,7 +585,7 @@ justify-content: center;
     width: 95%;
     text-align: center;
     font-weight: bold;
-    font-size: 3.5rem;
+    font-size: 1.5rem;
     color: #fff;
     position: relative;
     z-index: 2;
@@ -596,7 +594,7 @@ justify-content: center;
   .movie-card:hover .movie-hover .movie-title {
     display: block;
     position: absolute;
-    top: 50%;
+margin-top: 50%;
     left: 50%;
     transform: translate(-50%, -300px) translateY(-50%);
     text-align: center;
@@ -604,14 +602,14 @@ justify-content: center;
   }
 
   .movieSpan {
-    font-size: 1rem;
+    font-size: 0.7rem;
   }
   
 .heart-icon {
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #ff0000;
   cursor: pointer;
   z-index: 2;
@@ -625,4 +623,135 @@ justify-content: center;
   transform: scale();
 }
 
+#MainHome {
+  height: 55rem;
+}
+
+html {
+  height: 1000px;
+}
+
+  .buttonsWD {
+    height: 150px;
+  }
+
+  .openingHome {
+    font-size: 2rem;
+  }
+
+  #tvIcon {
+    width: 8%;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-color: transparent;
+  }
+
+  .navbar-collapse.show {
+    background-color: #47494d94;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5%;
+  }
+
+  .pagination-container {
+    transform: scale(0.8); 
+  }
+}
+
+
+
+
+@media only screen and (max-width: 320px) {
+
+
+
+  #carouselExampleIndicators .carousel-inner .carousel-item:nth-child(1) img {
+    content: url('https://images.fandango.com/ImageRenderer/0/0/redesign/static/img/default_poster.png/0/images/masterrepository/Fandango/223970/LOTR_ROTK_4K_V_DD_KA_TT_2000x3000_EN.jpg');
+  }
+
+  #carouselExampleIndicators .carousel-inner .carousel-item:nth-child(2) img {
+    content: url('https://c4.wallpaperflare.com/wallpaper/764/590/391/inception-leonardo-dicaprio-movie-posters-2400x3500-entertainment-movies-hd-art-wallpaper-preview.jpg');
+  }
+
+  #carouselExampleIndicators .carousel-inner .carousel-item:nth-child(3) img {
+    content: url('https://lh3.googleusercontent.com/proxy/feD9Q3lcz7__xOE_WD-FRjId0hS_ZR5_5ubRbw2Gc_JD8Mjw6lTyRqk8CrDxBXRforM0nXZJqpKs8DbUa579VL1zW1t4kBRRNH1l6Pxnji-I2KM');
+  }
+
+
+  .buttonsWD {
+    height: 100px;
+  }
+
+  #dailyId,
+#weeklyId {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 120px;
+  background: linear-gradient(to bottom right, #D42029, #f88181);
+  border: 0;
+  border-radius: 50px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+  .openingHome {
+    font-size: 1rem;
+  }
+
+  #tvIcon {
+    width: 6%;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-color: transparent;
+  }
+
+  .navbar-collapse.show {
+    background-color: #47494d94;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5%;
+  }
+
+  .pagination-container {
+    transform: scale(0.6); 
+  }
+
+
+  .movie-title {
+    font-size: 1rem;
+  }
+
+  .movie-card:hover .movie-hover .movie-title {
+    transform: translate(-50%, -130px) translateY(-50%);
+  }
+
+  .movieSpan {
+    font-size: 0.6rem;
+  }
+
+  .heart-icon {
+    font-size: 1rem;
+  }
 }
