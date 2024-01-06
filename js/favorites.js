@@ -3,7 +3,7 @@ let likedMoviesArray = JSON.parse(localStorage.getItem("likedMovies")) || [];
 document.addEventListener("DOMContentLoaded", () => {
   const likedMoviesList = document.getElementById("likedMoviesList");
   const resetButton = document.getElementById("resetButton");
-
+  const noLikedMoviesMessage = document.createElement("p");
   
   function createMovieCardWithHover(movieData) {
     const movieCard = document.createElement("div");
@@ -68,20 +68,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateLocalStorage() {
     localStorage.setItem("likedMovies", JSON.stringify(likedMoviesArray));
+    updateVisibility();
   }
 
   function displayLikedMovies() {
-    likedMoviesList.innerHTML = `<h2 style="visibility: hidden;" >Liked Movies</h2>`;
-    const movieCardContainer = document.createElement("div");
-    movieCardContainer.className = "movie-card-container";
-
-    likedMoviesArray.forEach((movieData) => {
-      const movieCard = createMovieCardWithHover(movieData);
-      movieCardContainer.appendChild(movieCard);
-    });
-
-    likedMoviesList.appendChild(movieCardContainer);
+    likedMoviesList.innerHTML = ""; 
+  
+    if (likedMoviesArray.length === 0) {
+  
+      likedMoviesList.appendChild(noLikedMoviesMessage);
+    } else {
+      const movieCardContainer = document.createElement("div");
+      movieCardContainer.className = "movie-card-container";
+  
+      likedMoviesArray.forEach((movieData) => {
+        const movieCard = createMovieCardWithHover(movieData);
+        movieCardContainer.appendChild(movieCard);
+      });
+  
+      likedMoviesList.appendChild(movieCardContainer);
+    }
+  
+    updateVisibility();
   }
+
+  function updateVisibility() {
+    const hasLikedMovies = likedMoviesArray.length > 0;
+  
+    resetButton.style.display = hasLikedMovies ? "block" : "none";
+    noLikedMoviesMessage.style.display = hasLikedMovies ? "none" : "block";
+  }
+
+  noLikedMoviesMessage.innerHTML = `<i style="color:white" class="fa-solid fa-clapperboard fa-flip"></i> <span> No liked movies yet...</span>`;
+  noLikedMoviesMessage.style.fontSize = "8rem"
+  noLikedMoviesMessage.style.margin = "auto"
+  noLikedMoviesMessage.style.fontFamily = "Dancing Script"
+  noLikedMoviesMessage.style.color = "#D42029"
+  noLikedMoviesMessage.style.display = likedMoviesArray.length > 0 ? "none" : "block";
+  likedMoviesList.appendChild(noLikedMoviesMessage);
 
   displayLikedMovies();
 
@@ -95,10 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("beforeunload", () => {
     localStorage.setItem("likedMovies", JSON.stringify(likedMoviesArray));
   });
-});
-
-window.addEventListener("beforeunload", () => {
-  localStorage.setItem("likedMovies", JSON.stringify(likedMoviesArray));
 });
 
 

@@ -13,6 +13,7 @@ body {
   background-color: #343a40;
 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 color: #f8f9fa;
+
 }
 
 .navbar {
@@ -89,15 +90,6 @@ html, body {
   color: rgb(173, 168, 168); 
   font-size: 20px;
 }
-
-#likedMoviesList{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 10px;
-  flex-direction: row;
-}
-
 
 .movie-container {
   display: flex;
@@ -208,7 +200,8 @@ display: flex;
 align-items: center;
 justify-content: center;
 font-size: 4rem;
-font-family: 'Dancing Script', cursive;}
+font-family: 'Dancing Script', cursive;
+}
 
 .movieSpan {
   font-size: 1rem;
@@ -218,8 +211,8 @@ font-family: 'Dancing Script', cursive;}
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 10px;
   flex-direction: row;
+  padding-left: 18px;
 }
 
 .movie-card-container {
@@ -232,3 +225,85 @@ font-family: 'Dancing Script', cursive;}
 .movie-card {
   margin-right: 1.25rem ;
 }
+
+
+#resetButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: 210px;
+  background: linear-gradient(to bottom right, #D42029, #f88181);
+  border: 0;
+  border-radius: 50px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  margin-bottom: -6rem;
+}
+
+#resetButton:not([disabled]):focus {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(189, 59, 83, 0.5), .125rem .125rem 1rem rgba(218, 82, 45, 0.5);
+}
+
+#resetButton:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(189, 59, 83, 0.5), .125rem .125rem 1rem rgba(218, 82, 45, 0.5);
+}
+
+#divForBtn{
+display: flex;
+justify-content: center;
+padding-bottom: 2rem;
+}
+
+#resetButton {
+  display: none;
+}
+
+#noLikedMoviesMessage {
+  display: none; 
+  text-align: center;
+  color: #fff; 
+  margin-top: 20px; 
+font-size: 5rem;
+}
+
+#footerHome {
+  height: 7rem;
+  margin-top: 7.8rem;
+  background-color: #343a40;
+  }
+  
+  #footerIcons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5%;
+    height: 80px;
+    font-size: 3rem;
+  }
+  
+  #creditLine{
+  display: flex;
+  justify-content: center;
+  }
+  
+  #footerIcons a {
+    text-decoration: none;
+    color: #f8f9fa;
+  }
+  
+  #footerIcons a:active {
+    text-decoration: none;
+  }

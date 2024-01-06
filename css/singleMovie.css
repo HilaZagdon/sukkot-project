@@ -210,11 +210,21 @@ body {
   width: 5.5rem;
   height: 8rem;
   border-radius: 50px;
+  transition: transform 0.3s; 
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.879);
+}
+
+#movieCast img:hover{
+  transform: scale(1.15); 
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.879); 
 }
 
 #movieGenre {
   margin-bottom: 2rem;
 }
+
+.heart-icon {
+  cursor:pointer; }
 
 @media only screen and (max-width: 768px) {
   .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
@@ -300,10 +310,12 @@ body > .carousel {
   position: absolute;
   bottom: -15%;
   transition: transform 0.25s ease;
+  top: 110%;
+  
 }
 .carousel__prev i,
 .carousel__next i {
-  font-size: 60px;
+  font-size: 80px;
   color: var(--box-border);
   cursor: pointer;
 }
@@ -312,10 +324,10 @@ body > .carousel {
   transform: scale(1.25);
 }
 .carousel__prev {
-  left: 40%;
+  left: 39%;
 }
 .carousel__next {
-  right: 40%;
+  right: 38%;
 }
 .carousel__body {
   width: 100%;
@@ -395,3 +407,30 @@ body > .carousel {
 .carousel {
   margin-top: 3rem;
 }
+
+#footerHome {
+  background-color: #343a40;
+  }
+  
+  #footerIcons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5%;
+    height: 80px;
+    font-size: 3rem;
+  }
+  
+  #creditLine{
+  display: flex;
+  justify-content: center;
+  }
+  
+  #footerIcons a {
+    text-decoration: none;
+    color: #f8f9fa;
+  }
+  
+  #footerIcons a:active {
+    text-decoration: none;
+  }

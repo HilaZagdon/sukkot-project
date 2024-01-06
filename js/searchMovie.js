@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   searchMoviesByNameBtn.addEventListener('click', () => {
+    footerHome.style.marginTop = 0;
     currentPage = 1;
     fetchMovies(searchMoviesByName.value, currentPage);
     showPagination();

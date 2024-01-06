@@ -20,23 +20,6 @@ body {
   background-color: #343a40;
 }
 
-@media only screen and (max-width: 991px) {
-  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-    background-color: transparent;
-  }
-}
-
-@media only screen and (max-width: 991px) {
-  .navbar-collapse.show {
-    background-color: #47494d94;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-radius: 5%;
-  }
-}
 
 #moviesPresentation {
   display: flex;
@@ -268,6 +251,7 @@ body {
   color: #ff0000;
   cursor: pointer;
   z-index: 2;
+  cursor:pointer;
 }
 
 .movie-card .movie-hover .movie-title,
@@ -373,7 +357,68 @@ height: 40rem;
   border: none;
 }
 
-@media only screen and (max-width: 992px) {
+
+
+#carouselExampleIndicators {
+  width: 90%; 
+  margin: auto; 
+  margin-top: 20px;
+  
+}
+
+.carousel-inner img {
+  width: 100%; 
+  height: 600px;
+  border-radius: 10px;
+}
+
+.carousel-inner {
+  transition: transform 0.5s ease-in-out; 
+}
+
+
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #2f3539;
+  background: -moz-radial-gradient(circle, #2f3539 0%, #1e272e 100%);
+  background: -webkit-radial-gradient(circle, #2f3539 0%, #1e272e 100%);
+  background: radial-gradient(circle, #2f3539 0%, #1e272e 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2f3539",endColorstr="#1e272e",GradientType=1);
+}
+
+#footerHome {
+height: 7rem;
+background-color: #343a40;
+}
+
+#footerIcons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5%;
+  height: 80px;
+  font-size: 3rem;
+}
+
+#creditLine{
+display: flex;
+justify-content: center;
+}
+
+#footerIcons a {
+  text-decoration: none;
+  color: #f8f9fa;
+}
+
+#footerIcons a:active {
+  text-decoration: none;
+}
+
+
+@media only screen and (max-width: 991px) {
   .buttonsWD {
     align-items: center;
   }
@@ -448,7 +493,27 @@ height: 40rem;
 
 }
 
-@media only screen and (max-width: 768px) {
+
+@media only screen and (max-width: 991px) {
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-color: transparent;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .navbar-collapse.show {
+    background-color: #47494d94;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5%;
+  }
+}
+
+
+@media only screen and (max-width: 991px) {
   #tvIcon {
     width: 6%;
   }
@@ -462,7 +527,7 @@ height: 40rem;
   width: 120px;
   background: linear-gradient(to bottom right, #D42029, #f88181);
   border: 0;
-  border-radius: 12px;
+  border-radius: 50px;
   color: #FFFFFF;
   cursor: pointer;
   font-size: 1.3rem;
@@ -560,35 +625,4 @@ height: 40rem;
   transform: scale();
 }
 
-}
-
-
-#carouselExampleIndicators {
-  width: 90%; 
-  margin: auto; 
-  margin-top: 20px;
-  
-}
-
-.carousel-inner img {
-  width: 100%; 
-  height: 600px;
-  border-radius: 10px;
-}
-
-.carousel-inner {
-  transition: transform 0.5s ease-in-out; 
-}
-
-
-html, body {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  background: #2f3539;
-  background: -moz-radial-gradient(circle, #2f3539 0%, #1e272e 100%);
-  background: -webkit-radial-gradient(circle, #2f3539 0%, #1e272e 100%);
-  background: radial-gradient(circle, #2f3539 0%, #1e272e 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2f3539",endColorstr="#1e272e",GradientType=1);
 }
