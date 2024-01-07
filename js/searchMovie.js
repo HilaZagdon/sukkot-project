@@ -86,17 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function displayLikedMovies() {
-    const movieCardContainer = document.createElement("div");
-    movieCardContainer.className = "movie-card-container";
-
-    likedMoviesArray.forEach((movieData) => {
-      const movieCard = createMovieCard(movieData);
-      movieCardContainer.appendChild(movieCard);
-    });
-
-    likedMoviesList.appendChild(movieCardContainer);
-  }
 
 
   function updatePagination() {

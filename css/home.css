@@ -667,7 +667,14 @@ html {
 
 @media only screen and (max-width: 320px) {
 
+  #MainHome {
+    height: 52rem;
+  }
 
+  #footerHome {
+    height: 7rem;
+    background-color: #343a40;
+    }
 
   #carouselExampleIndicators .carousel-inner .carousel-item:nth-child(1) img {
     content: url('https://images.fandango.com/ImageRenderer/0/0/redesign/static/img/default_poster.png/0/images/masterrepository/Fandango/223970/LOTR_ROTK_4K_V_DD_KA_TT_2000x3000_EN.jpg');
@@ -678,7 +685,7 @@ html {
   }
 
   #carouselExampleIndicators .carousel-inner .carousel-item:nth-child(3) img {
-    content: url('https://lh3.googleusercontent.com/proxy/feD9Q3lcz7__xOE_WD-FRjId0hS_ZR5_5ubRbw2Gc_JD8Mjw6lTyRqk8CrDxBXRforM0nXZJqpKs8DbUa579VL1zW1t4kBRRNH1l6Pxnji-I2KM');
+    content: url('https://preview.redd.it/official-poster-for-the-abyss-special-edition-remastered-in-v0-u04n39mmc50c1.jpg?width=640&crop=smart&auto=webp&s=35fbad23df1ce3792516613993ffba92c75cf1e4');
   }
 
 

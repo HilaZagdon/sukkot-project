@@ -100,10 +100,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   noLikedMoviesMessage.innerHTML = `<i style="color:white" class="fa-solid fa-clapperboard fa-flip"></i> <span> No liked movies yet...</span>`;
-  noLikedMoviesMessage.style.fontSize = "8rem"
-  noLikedMoviesMessage.style.margin = "auto"
-  noLikedMoviesMessage.style.fontFamily = "Dancing Script"
-  noLikedMoviesMessage.style.color = "#D42029"
+
+  if (window.innerWidth <= 850) {
+    noLikedMoviesMessage.style.fontSize = "4rem";
+    noLikedMoviesMessage.style.margin = "0 5rem";
+  } else {
+    noLikedMoviesMessage.style.fontSize = "8rem";
+    noLikedMoviesMessage.style.margin = "auto";
+  }
+  
+  noLikedMoviesMessage.style.fontFamily = "Dancing Script";
+  noLikedMoviesMessage.style.color = "#D42029";
   noLikedMoviesMessage.style.display = likedMoviesArray.length > 0 ? "none" : "block";
   likedMoviesList.appendChild(noLikedMoviesMessage);
 

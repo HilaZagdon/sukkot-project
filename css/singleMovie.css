@@ -316,7 +316,7 @@ body > .carousel {
 }
 .carousel__body .carousel__slider__item .item__3d-frame {
   position: relative;
-  width: 100%;
+  width: 90%;
   height: 100%;
   transition: transform 1s ease-in-out;
   -webkit-transform-style: preserve-3d;
@@ -328,8 +328,8 @@ body > .carousel {
   bottom: -15%;
   width: 100%;
   height: 40px;
-  background: var(--box-shadow);
-  box-shadow: 0px 0px 5px 5px var(--box-shadow);
+  background: rgba(0, 0, 0, 0.537);
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.537);
   transform: rotateX(90deg) translate3d(0px, -20px, 0px);
   opacity: 0.85;
 }
@@ -363,12 +363,15 @@ body > .carousel {
   border-left-width: 5px;
   transform: translate3d(1px, 0, -40px) rotateY(-90deg);
   transform-origin: 0%;
+  background-color: #fbf4f4;
+  background: linear-gradient(to right, #070101, #ffffff);
 }
 .carousel__body .carousel__slider__item .item__3d-frame__box--right {
   right: 0;
   border-right-width: 5px;
   transform: translate3d(-1px, 0, -40px) rotateY(90deg);
   transform-origin: 100%;
+  background: linear-gradient(to left, #070101, #ffffff);
 }
 
 .carousel {
@@ -416,7 +419,7 @@ body > .carousel {
 
 
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
       background-color: transparent;
     }
