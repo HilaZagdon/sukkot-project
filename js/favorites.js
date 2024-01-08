@@ -100,8 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   noLikedMoviesMessage.innerHTML = `<i style="color:white" class="fa-solid fa-clapperboard fa-flip"></i> <span> No liked movies yet...</span>`;
-
-  if (window.innerWidth <= 850) {
+  if (window.innerWidth <= 450) {
+    noLikedMoviesMessage.style.fontSize = "3.5rem";
+    noLikedMoviesMessage.style.margin = "5rem 2rem 0 2rem";
+  } 
+ else if (window.innerWidth <= 850) {
     noLikedMoviesMessage.style.fontSize = "4rem";
     noLikedMoviesMessage.style.margin = "0 5rem";
   } else {

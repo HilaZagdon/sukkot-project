@@ -148,7 +148,7 @@ body {
 #movieDescriptionUnderPoster {
   margin-top: 4rem;
   margin-left: -2.5rem;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.2rem;
   padding: 2rem;
 }
@@ -291,10 +291,10 @@ body > .carousel {
   transform: scale(1.25);
 }
 .carousel__prev {
-  left: 39%;
+  left: 40%;
 }
 .carousel__next {
-  right: 38%;
+  right: 40%;
 }
 .carousel__body {
   width: 100%;
@@ -417,6 +417,27 @@ body > .carousel {
     font-size: 1.4rem;
   }
 
+  #moviePresentation {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  #posterContainer {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  #movieDetails {
+    flex: 2;
+    padding: 20px;
+    color: #ffffff;
+    font-weight: 700;
+  }
+
 
 
   @media only screen and (max-width: 850px) {
@@ -479,7 +500,7 @@ font-size: 4rem;
     #movieDescriptionUnderPoster {
       margin-top: 2rem;
       margin-left: -1.5rem;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 0.9rem;
       padding: 1rem;
     }
@@ -585,7 +606,15 @@ font-size: 4rem;
     }
   }
 
-  @media only screen and (max-width: 991px) {
+  @media only screen and (max-width: 450px) {
+
+    #footerHome {
+      margin-top: 0;
+    }
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+      background-color: transparent;
+    }
+
     .navbar-collapse.show {
       background-color: #47494d94;
       display: flex;
@@ -600,7 +629,126 @@ font-size: 4rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 4rem;
+      font-size: 3rem;
       font-family: "Dancing Script", cursive;
     }
+
+    
+#searchContainer {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+  border-radius: 40px;
+  background-color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  margin: 0 auto;
+}
+
+#searchByIdInput {
+  flex: 1;
+  border: none;
+  height: 3rem;
+  background: transparent;
+  outline: none;
+  padding-left: 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#searchIdButton {
+  width: 20%;
+  height: 20%;
+  margin-left: -10rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel {
+  margin-left: -2.5rem;
+}
+
+.carousel__prev {
+  left: 25%;
+  font-size: 0;
+}
+.carousel__next {
+  right: 0%;
+  font-size: 0;
+}
+
+#MoviePoster img {
+  max-width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  margin-top: 0;
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-80px);
+  }
+}
+
+.carousel__body .carousel__slider__item .item__3d-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s ease-in-out;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+ #moviePresentation {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #posterContainer {
+    order: 2;
+    padding: 10px; 
+  }
+
+  #movieDetails {
+    order: 1; 
+    padding: 10px;
+  }
+
+  .movie-cast {
+    max-width: 100%;  
+    overflow: hidden; 
+}
+
+#movieCast img {
+  width: 4rem;
+  height: 6rem;
+  border-radius: 40px;
+  transition: transform 0.3s;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.879);
+}
+
+.columnsSection {
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 2px;
+  text-align: center;
+}
+
+div.cast-columns1 div{
+flex-direction: column;
+align-items: center;
+
+}
+
+div.cast-columns2 div{
+  flex-direction: column;
+  align-items: center;
+  
+  }
+
+
   }

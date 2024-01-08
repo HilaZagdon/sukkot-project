@@ -140,17 +140,17 @@ document.addEventListener('DOMContentLoaded', () => {
   searchMoviesByNameBtn.addEventListener('click', searchMoviesByNameFun);
   searchMoviesByName.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-      event.preventDefault(); // Prevent the default form submission
+      event.preventDefault(); 
       searchMoviesByNameFun();
     }
   });
   
   function searchMoviesByNameFun() {
-    footerHome.style.marginTop = 0;
     currentPage = 1;
     fetchMovies(searchMoviesByName.value, currentPage);
     showPagination();
     containerMovieTicket.style.display = "none";
+    footerHome.style.marginTop = "0";
   }
   
   updatePagination();

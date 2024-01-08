@@ -252,12 +252,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   displayLikedMovies();
 
-  resetButton.addEventListener("click", () => {
-    localStorage.removeItem("likedMovies");
-    likedMoviesArray = [];
-    updateLocalStorage();
-    displayLikedMovies();
-  });
 
   updateLikedMoviesUI();
 });

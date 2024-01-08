@@ -40,16 +40,7 @@ color: #f8f9fa;
   font-family: 'Dancing Script', cursive;
 }
 
-#backgroundImage{
- height: 40rem;
-}
 
-#theImageItself{
-  height: 50rem;
-  width: 94.8rem;
-  overflow: hidden;
-  opacity: 0.5;
-}
 
 
 #searchContainer {
@@ -399,7 +390,7 @@ height: 40rem;
 
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 450px) {
   .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     background-color: transparent;
   }
@@ -412,4 +403,133 @@ height: 40rem;
     text-align: center;
     border-radius: 5%;
   }
+
+  #searchLineID {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-family: 'Dancing Script', cursive;
+  }
+  
+  
+  
+  #searchContainer {
+    display: flex;
+    align-items: center;
+    width: 80%; 
+    height: 80%;
+    border-radius: 40px; 
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: center; 
+    margin: 0 auto; 
+  }
+  
+  #searchMoviesByName {
+    flex: 1; 
+    border: none;
+    height: 3rem;
+    background: transparent;
+    outline: none;
+    padding-left: 30px;
+    font-size: 1.5rem ;
+    font-weight: bold;
+  }
+  
+  #searchMoviesByNameBtn{
+    background: linear-gradient(to right, #D42029, #ff0000);
+  color: #fff;
+  border-radius: 2rem;
+  width: 8rem;
+  height: 3rem;
+  font-size: 1.3rem;
+  margin-left: -10rem;
+  }
+
+  
+#movieTicketImage{
+  width: 70%;
+  margin-top: 4rem;
+  
+  }
+  
+  #containerMovieTicket{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #footerHome {
+    margin-top: 8.6rem;
+    height: 7rem;
+    background-color: #343a40;
+    }
+    
+ html, body {
+      height: 35rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .pagination {
+    transform: scale(0.45);
+    }
+
+    #moviesPresentation {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 10px;
+      margin-top: 1.5rem;
+    }
+
+    .movie-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 10px;
+    }
+    
+    .movie-card {
+      width: calc(100% );
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      background-color: #000;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .movie-title {
+      margin-top: 10px;
+      width: 95%;
+      text-align: center;
+      font-weight: bold;
+      font-size: 2rem;
+      color: #fff;
+      position: relative;
+      z-index: 2;
+    }
+  
+    .movie-card:hover .movie-hover .movie-title {
+      display: block;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -400px) translateY(-50%);
+      text-align: center;
+      z-index: 1;
+    }
+    
+  
+  
+    .movieSpan {
+      font-size: 0.8rem;
+    }
+  
+    .heart-icon {
+      font-size: 2.2rem;
+   margin-top: 20px;
+    }
+  
+    
 }

@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const imageTag = profilePath ? `<img src="${profilePath}" alt="${actorName}" width="50" height="50" style="margin-right: 10px;">` : '';
     
     
-      const actorInfo = `<div style="display:flex;"> ${imageTag} <div class="bigCharacterName" style="display:flex; flex-direction:column; align-items:center;  justify-content:center; margin-left:auto; margin-right:auto"><span style="font-weight: 700;">${characterName}</span> <span style="font-weight: 500;">  ${actorName}</span> </div> </div>`;
+      const actorInfo = `<div style="display:flex;"> ${imageTag} <div class="bigCharacterName" style="display:flex; flex-direction:column; align-items:center;  justify-content:center; margin-left:auto; margin-right:auto"><span style="font-weight: 600;">${characterName}</span> <span style="font-weight: 400;">  ${actorName}</span> </div> </div>`;
     
       if (i < 5) {
         column1 += (i > 0 ? '<br>' : '') + actorInfo;
