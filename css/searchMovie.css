@@ -429,6 +429,7 @@ height: 40rem;
     flex: 1; 
     border: none;
     height: 3rem;
+    width: 132px;
     background: transparent;
     outline: none;
     padding-left: 30px;
@@ -440,15 +441,15 @@ height: 40rem;
     background: linear-gradient(to right, #D42029, #ff0000);
   color: #fff;
   border-radius: 2rem;
-  width: 8rem;
+  width: 5rem;
   height: 3rem;
   font-size: 1.3rem;
-  margin-left: -10rem;
+
   }
 
   
 #movieTicketImage{
-  width: 70%;
+  width: 75%;
   margin-top: 4rem;
   
   }
@@ -471,7 +472,7 @@ height: 40rem;
       padding: 0;
     }
 
-    .pagination {
+    .pagination-container {
     transform: scale(0.45);
     }
 

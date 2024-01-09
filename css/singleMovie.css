@@ -26,12 +26,12 @@
 }
 
 #searchIdButton {
-  width: 5%;
-  height: 5%;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  margin-left: 10px;
+  background: linear-gradient(to right, #D42029, #ff0000);
+color: #fff;
+border-radius: 2rem;
+width: 8rem;
+height: 3rem;
+font-size: 1.3rem;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -177,7 +177,7 @@ body {
 }
 
 #movieTitle {
-  width: 100%;
+  width: 90%;
   font-weight: 900;
   font-family: "Dancing Script", cursive;
   font-size: 3rem;
@@ -291,7 +291,7 @@ body > .carousel {
   transform: scale(1.25);
 }
 .carousel__prev {
-  left: 40%;
+  left: 38.5%;
 }
 .carousel__next {
   right: 40%;
@@ -469,23 +469,18 @@ body > .carousel {
     }
 
 
-i.fa-regular.fa-circle-left::before{
-font-size: 4rem;
+i.fa-solid .fa-square-caret-left::before{
+font-size: 2rem;
 
     }
   
-    i.fa-regular.fa-circle-right::before{
-font-size: 4rem;
+    i.fa-solid .fa-square-caret-right::before{
+font-size: 2rem;
 
     }
     
     #searchIdButton {
-      width: 10%;
-      height: 10%;
-      background-color: transparent;
-      border: none;
       cursor: pointer;
-      margin-left: 10px;
     }
   
     #searchLineID {
@@ -531,7 +526,7 @@ font-size: 4rem;
     }
   
     #movieTitle {
-      width: 100%;
+      width: 90%;
       font-weight: 700;
       font-family: "Dancing Script", cursive;
       font-size: 2rem;
@@ -649,6 +644,7 @@ font-size: 4rem;
   flex: 1;
   border: none;
   height: 3rem;
+  width: 100px;
   background: transparent;
   outline: none;
   padding-left: 30px;
@@ -657,12 +653,12 @@ font-size: 4rem;
 }
 
 #searchIdButton {
-  width: 20%;
-  height: 20%;
-  margin-left: -10rem;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+  background: linear-gradient(to right, #D42029, #ff0000);
+  color: #fff;
+  border-radius: 2rem;
+  width: 5rem;
+  height: 3rem;
+  font-size: 1.3rem;
 }
 
 .carousel {
@@ -702,7 +698,9 @@ font-size: 4rem;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
-
+.carousel__body{
+margin-left: 2.5rem;
+}
  #moviePresentation {
     flex-direction: column;
     align-items: center;

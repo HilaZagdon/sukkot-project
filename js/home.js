@@ -166,6 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.innerWidth <= 850) {
       moviesPresentation.style.marginTop = "21rem";
     }
+    dailyId.classList.add("active");
+    weeklyId.classList.remove("active");
   });
 
   weeklyId.addEventListener("click", () => {
@@ -178,6 +180,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.innerWidth <= 850) {
       moviesPresentation.style.marginTop = "21rem";
     }
+    dailyId.classList.remove("active");
+    weeklyId.classList.add("active");
   });
 
   pagination.addEventListener("click", (event) => {

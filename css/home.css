@@ -78,6 +78,13 @@ body {
 
 }
 
+#dailyId.active,
+#weeklyId.active {
+  background: linear-gradient(to bottom left, #581010, #D42029);
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5),
+    -.125rem -.125rem 1rem rgba(189, 59, 83, 0.5),
+    .125rem .125rem 1rem rgba(218, 82, 45, 0.5);
+}
 
 
 #dailyId,
@@ -837,8 +844,8 @@ html {
  margin-top: 20px;
   }
 
-  .pagination {
-    transform: scale(0.55);
+  .pagination-container {
+    transform: scale(0.45);
     }
   
 }
