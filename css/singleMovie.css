@@ -457,7 +457,7 @@ body > .carousel {
       left: 35%;
     }
     .carousel__next {
-      right: 35%;
+      right: 38%;
     }
 
     div.cast-columns1 span {
@@ -469,14 +469,11 @@ body > .carousel {
     }
 
 
-i.fa-solid .fa-square-caret-left::before{
-font-size: 2rem;
-
-    }
-  
-    i.fa-solid .fa-square-caret-right::before{
-font-size: 2rem;
-
+    .carousel__prev i,
+    .carousel__next i {
+      font-size: 4rem;
+      color: var(--box-border);
+      cursor: pointer;
     }
     
     #searchIdButton {
